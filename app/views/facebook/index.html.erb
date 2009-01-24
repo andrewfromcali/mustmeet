@@ -1,3 +1,37 @@
-<% @list.each do |friend| %>
+<p>
+Select which friends are in the same city as you.  Then "Must Meet in Real Life" will
+create a tentative calendar for your meetings with each friend.  The friend will have
+the option of changing the date or time and you both must confirm the meeting before
+it's official.
+</p>
+
+<table>
+<tr>
+<% @list.each_with_index do |friend,i| %>
+  <% if i % 3 == 0 %>
+    </tr><tr>
+  <% end %>
+  <td nowrap="true">
+  <% if friend.pic_square == '' %>
+    <img src="/images/50x50.png" onclick="pick(<%=i%>);"/>
+  <% else %>
+    <img src="<%= friend.pic_square%>" onclick="pick(<%=i%>);"/>
+  <% end %>
+  <br/>
   <%= friend.name%><br/>
+  <div id="d<%=i%>" style="color: red; font-weight: bold;">&nbsp;</div>
+  </td>
 <% end %>
+</tr>
+</table>
+
+<script type="text/javascript">
+  function pick(id) {
+    d = document.getElementById('d'+id);
+    if (d.innerHTML == 'selected')
+      d.innerHTML='&nbsp;';
+    else
+      d.innerHTML='selected';
+  }
+</script>
+

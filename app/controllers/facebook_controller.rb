@@ -3,7 +3,7 @@ class FacebookController < ApplicationController
   
   def index
     response = fbsession.users_getInfo(:uids => fbsession.friends_get.uid_list, 
-                                       :fields => [:name, :pic_small])
+                                       :fields => [:name, :pic_square])
     @list = response.user_list
   end
   
