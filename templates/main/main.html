@@ -4,31 +4,30 @@
 
 <p>
 Select which friends are in the same city as you.  Then "Must Meet in Real Life" will
-keep a list of meetings betwen you and these friends.  If you fail to meet with any
+keep a list of meetings between you and these friends.  If you fail to meet with any
 same-city-friend within three months, you will have to remove this friend.
 </p>
 
-<!--
 <table>
 <tr>
-<% @list.each_with_index do |friend,i| %>
-  <% if i % 3 == 0 %>
+{% for friend in list %}
+  {% if true %}
     </tr><tr>
-  <% end %>
+  {% endif %}
+
   <td nowrap="true">
-  <% if friend.pic_square == '' %>
-    <img src="/images/50x50.png" onclick="pick(<%=i%>);"/>
-  <% else %>
-    <img src="<%= friend.pic_square%>" onclick="pick(<%=i%>);"/>
-  <% end %>
+  {% ifequal friend.pic_square '' %}
+    <img src="/images/50x50.png" onclick="pick({{forloop.counter0}});"/>
+  {% else %}
+    <img src="{{friend.pic_square}}" onclick="pick({{forloop.counter0}});"/>
+  {% endifequal %}
   <br/>
-  <%= friend.name%><br/>
-  <div id="d<%=i%>" style="color: red; font-weight: bold;">&nbsp;</div>
+  {{ friend.name }}<br/>
+  <div id="d{{forloop.counter0}}" style="color: red; font-weight: bold;">&nbsp;</div>
   </td>
-<% end %>
+{% endfor %}
 </tr>
 </table>
--->
 
 <script type="text/javascript">
   function pick(id) {
