@@ -1,10 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
 <p>
 Select which friends are in the same city as you.  Then "Must Meet in Real Life" will
-create a tentative calendar for your meetings with each friend.  The friend will have
-the option of changing the date or time and you both must confirm the meeting before
-it's official.
+keep a list of meetings betwen you and these friends.  If you fail to meet with any
+same-city-friend within three months, you will have to remove this friend.
 </p>
 
+<!--
 <table>
 <tr>
 <% @list.each_with_index do |friend,i| %>
@@ -24,6 +28,7 @@ it's official.
 <% end %>
 </tr>
 </table>
+-->
 
 <script type="text/javascript">
   function pick(id) {
@@ -35,3 +40,4 @@ it's official.
   }
 </script>
 
+{% endblock %}
