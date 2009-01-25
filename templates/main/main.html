@@ -11,10 +11,10 @@ same-city-friend within three months, you will have to remove this friend.
 <table>
 <tr>
 {% for friend in list %}
-  {% if true %}
+  {% if forloop.counter0|divisibleby:3 %}
     </tr><tr>
   {% endif %}
-
+  
   <td nowrap="true">
   {% ifequal friend.pic_square '' %}
     <img src="/images/50x50.png" onclick="pick({{forloop.counter0}});"/>

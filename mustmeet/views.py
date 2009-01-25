@@ -4,7 +4,7 @@ from django import forms
 from google.appengine.ext import db
 
 import facebook.djangofb as facebook
-
+    
 @facebook.require_login()
 def main(request):
   list = request.facebook.users.getInfo(request.facebook.friends.get(), ['name','pic_square'])
